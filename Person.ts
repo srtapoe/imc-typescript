@@ -77,4 +77,13 @@ export default class Person {
             console.log(`Seu IMC eh ${imc.toFixed(2)}\n Obesidade grau 3`);
         }
     }
+
+    convertToJson(){
+        return {
+            user: this._user,
+            age: this._age,
+            weight: this._weight,
+            height: this._height,
+        };
+    }
 }
