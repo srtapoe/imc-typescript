@@ -1,4 +1,4 @@
-class Person {
+export default class Person {
     private _user: string;
     private _age: number;
     private _weight: number;
@@ -47,5 +47,34 @@ class Person {
 
     set height(value: number) {
         this._height = value;
+    }
+
+
+    calculateIMC(weight: number, height: number):number{
+        if(height <= 0 || weight <=0){
+            throw new Error("The values of height and weight must be greater than zero")
+        }
+
+        const heightInMeters = height / 100;
+
+        const imc = weight / Math.pow(heightInMeters, 2);
+
+        return imc;
+    }
+
+    showIMClassification(imc:number):void{
+        if (imc < 18.5) {
+            console.log(`Seu IMC eh ${imc.toFixed(2)}\n Abaixo do peso`);
+        } else if (imc < 24.9) {
+            console.log(`Seu IMC eh ${imc.toFixed(2)}\n Peso normal`);
+        } else if (imc < 29.9) {
+            console.log(`Seu IMC eh ${imc.toFixed(2)}\n Sobrepeso`);
+        } else if (imc < 34.9) {
+            console.log(`Seu IMC eh ${imc.toFixed(2)}\n Obesidade grau 1`);
+        } else if (imc < 39.9) {
+            console.log(`Seu IMC eh ${imc.toFixed(2)}\n Obesidade grau 2`);
+        } else {
+            console.log(`Seu IMC eh ${imc.toFixed(2)}\n Obesidade grau 3`);
+        }
     }
 }
